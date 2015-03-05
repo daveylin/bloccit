@@ -1,20 +1,26 @@
 require 'faker'
  
  # Create Posts
- 50.times do
-   Post.create!(
-     title:  Faker::Lorem.sentence,
-     body:   Faker::Lorem.paragraph
-   )
+ 1.times do
+   postTest = Post.find_by title: 'Unique Title'
+   if postTest.nil?
+     Post.create!(
+       title:  "Unique Title",
+       body:   Faker::Lorem.paragraph
+     )
+   end
  end
  posts = Post.all
  
  # Create Comments
- 100.times do
+ 1.times do
+   commentTest = Comment.find_by body: 'Unique Comment'
+   if commentTest.nil?
    Comment.create!(
      post: posts.sample,
-     body: Faker::Lorem.paragraph
+     body: "Unique Comment"
    )
+   end
  end
  
  puts "Seed finished"
