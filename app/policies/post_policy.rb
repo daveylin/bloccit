@@ -8,10 +8,12 @@ class PostPolicy < ApplicationPolicy
     #attr_reader :user, :scope
 
     def resolve
-      if user.admin?
+      if user.nil?
+        scope.none
+      elsif user.admin?
         scope.all
       else
-        scope.where(:published => true)
+        scope.where(:user_id => user.id)
       end
     end
     
