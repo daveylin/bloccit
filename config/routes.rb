@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  #get 'summary/index'
+  #get 'summary/new'
+  #get 'summary/show'
+  #get 'summary/edit'
+
   devise_for :users
   #get 'posts/index'
   #get 'posts/show'
@@ -8,10 +13,14 @@ Rails.application.routes.draw do
   
   #resources :posts
   #resources :topics
+  #resources :summary
   resources :topics do
-    resources :posts, except: [:index]
+    resources :posts, except: [:index] do
+      resources :summary, except: [:index]
+    end
   end
 
+  
   #get 'welcome/contact'
   #get 'welcome/index'
   #get 'welcome/about'
