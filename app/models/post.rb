@@ -4,6 +4,8 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :topic
   
+  mount_uploader :image, ImageUploader
+  
   default_scope { order('created_at') }
   #scope :ordered_by_title, -> { order('title') }
   #scope :ordered_by_reverse_created_at, -> { order('created_at DESC') }
