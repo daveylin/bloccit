@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   #resources :summary
   resources :topics do
     resources :posts, except: [:index] do
-      resources :summary, except: [:index]
+      resources :summaries, except: [:index]
     end
   end
 
