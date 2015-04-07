@@ -19,6 +19,7 @@ class TopicsController < ApplicationController
 
   def edit
     @topic = Topic.find(params[:id])
+    @topic.save
     authorize @topic
   end
   
@@ -36,8 +37,8 @@ class TopicsController < ApplicationController
    end
  
    def update
-     #@topic = Topic.find(params[:id])
-     @topic = Topic.new(topic_params)
+     @topic = Topic.find(params[:id])
+     #@topic = Topic.new(topic_params)
      authorize @topic
      if @topic.update_attributes(params.require(:topic).permit(:name, :description, :public))
        redirect_to @topic
