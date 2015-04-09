@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'comments/create'
+
   #get 'summary/index'
   #get 'summary/new'
   #get 'summary/show'
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
   resources :topics do
     resources :posts, except: [:index] do
       resources :summaries, except: [:index]
+      resources :comments, only: [:create]
     end
   end
 
