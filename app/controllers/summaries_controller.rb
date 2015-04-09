@@ -25,6 +25,8 @@ class SummariesController < ApplicationController
      #@post = current_user.posts.build(post_params)
      @post = Post.find(params[:post_id])
      @summary = Summary.new(params.require(:summary).permit(:name, :details))
+     #@summary.post = @post
+      binding.pry
      authorize @summary
      if @summary.save
        redirect_to [@topic, @post, @summary], notice: "Summary was saved successfully."
