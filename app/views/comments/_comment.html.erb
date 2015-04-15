@@ -1,0 +1,18 @@
+    <div class="media">
+         <div class="media-body">
+           <h4 class="media-heading">
+             Comments
+           </h4>
+         </div>
+       </div>
+<% @post.comments.each do |comment| %>
+     
+       <p></p>
+       <%= comment.body %>
+       <br/>
+     <small>
+       <%= image_tag(comment.user.avatar.tiny.url) if comment.user.avatar? %>
+       submitted <%= time_ago_in_words(comment.created_at) %> ago by
+       <%= comment.user.name %>
+     </small>
+    <% end %>
