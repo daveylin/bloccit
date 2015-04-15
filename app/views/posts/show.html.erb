@@ -17,6 +17,7 @@
   <div class="col-md-4">
     <p></p>
   </div>
+  <%= render partial: 'comments/form', locals: { topic: @topic, post: @post } %>
   <div class="col-md-4">
     <% if policy(Summary.new).create? %>
     <%= link_to "New Summary", new_topic_post_summary_path(@topic, @post), class: 'btn btn-success' %>
