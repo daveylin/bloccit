@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
-  has_many :comments
-  has_one :summary
+  has_many :comments, dependent: :destroy
+  has_one :summary, dependent: :destroy
   belongs_to :user
   belongs_to :topic
   
