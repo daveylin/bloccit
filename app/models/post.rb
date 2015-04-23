@@ -37,4 +37,15 @@ class Post < ActiveRecord::Base
   def create_vote
     user.votes.create(value: 1, post: self)
   end
+  
+  def save_with_initial_vote
+    ActiveRecord::Base.transaction do
+      #@topic = Topic.find(params[:topic_id])
+      #@post = current_user.posts.build(post_params)
+      #@post.topic = Topic.find(params[:topic_id])
+      #authorize @post
+      self.save
+      self.create_vote
+    end
+  end
 end
