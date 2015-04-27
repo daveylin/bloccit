@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :posts, except: [:index] do
       resources :summaries, except: [:index]
       resources :comments, only: [:create, :destroy]
+      resources :favorites, only: [:create, :destroy]
       
       post '/upvote' => 'votes#up_vote', as: :up_vote
       post '/downvote' => 'votes#down_vote', as: :down_vote
