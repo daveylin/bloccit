@@ -4,6 +4,7 @@ class FavoritesController < ApplicationController
      @topic = Topic.find(params[:topic_id])
      post = Post.find(params[:post_id])
      favorite = current_user.favorites.build(post: post)
+     authorize favorite
  
      if favorite.save
        # Add code to generate a success flash and redirect to post
@@ -23,6 +24,7 @@ class FavoritesController < ApplicationController
      @topic = Topic.find(params[:topic_id])
      post = Post.find(params[:post_id])
      favorite = current_user.favorited(post)
+     authorize favorite
      
    if favorite.destroy
      # Flash success and redirect to @post
