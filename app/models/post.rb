@@ -7,6 +7,7 @@ class Post < ActiveRecord::Base
   belongs_to :topic
   
   default_scope { order('rank DESC') }
+  scope :visible_to, -> (user) { user ? all : joins(:topic).where('topics.public' => true) }
   #scope { order('created_at') }
   #scope :ordered_by_title, -> { order('title') }
   #scope :ordered_by_reverse_created_at, -> { order('created_at DESC') }
