@@ -13,7 +13,7 @@
     <p><%= markdown_to_html @post.body %></p>
     <p></p>
     
-    <%= render partial: 'comments/comment', locals: { topic: @topic, post: @post, comment: @comments } %>
+    <%= render partial: 'comments/comment', collection: @comments %>
     <% if policy(Comment).create? %>
     <%= render partial: 'comments/form', locals: { topic: @topic, post: @post } %>
     <% end %>
@@ -28,7 +28,7 @@
   </div>
   <div class="col-md-4">
     <% if policy(Summary.new).create? %>
-    <%= link_to "New Summary", new_topic_post_summary_path(@topic, @post), class: 'btn btn-success' %>
+    <%= link_to "New Summary", new_post_summary_path(@post), class: 'btn btn-success' %>
     <% end %>
     <% if policy(@post).destroy? %>
        <%= link_to "Delete Post", [@topic, @post], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this post?' } %>

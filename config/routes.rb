@@ -16,15 +16,16 @@ Rails.application.routes.draw do
   #resources :topics
   #resources :summary
   resources :topics do
-    resources :posts, except: [:index] do
-      resources :summaries, except: [:index]
-      resources :comments, only: [:create, :destroy]
-      resources :favorites, only: [:create, :destroy]
+    resources :posts, except: [:index], controller: 'topics/posts'
+  end
+  
+  resources :posts, only: [:index] do
+        resources :summaries, except: [:index]
+        resources :comments, only: [:create, :destroy]
+        resources :favorites, only: [:create, :destroy]
       
-      post '/upvote' => 'votes#up_vote', as: :up_vote
-      post '/downvote' => 'votes#down_vote', as: :down_vote
-      
-    end
+        post '/upvote' => 'votes#up_vote', as: :up_vote
+        post '/downvote' => 'votes#down_vote', as: :down_vote
   end
 
   
