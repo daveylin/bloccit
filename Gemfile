@@ -5,6 +5,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.9'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
+
+gem 'puma', group: :production
+gem 'puma', group: :development
+
 group :production do
    gem 'pg'
    gem 'rails_12factor'
