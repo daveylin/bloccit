@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   #get 'summary/edit'
 
   devise_for :users
-    resources :users, only: [:update] 
+    resources :users, only: [:update, :show] 
   #get 'posts/index'
   #get 'posts/show'
   #get 'posts/new'
