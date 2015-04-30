@@ -12,10 +12,20 @@
      </small>
     <p><%= markdown_to_html @post.body %></p>
     <p></p>
-    
-    <%= render partial: 'comments/comment', collection: @comments %>
+    <div class="media">
+         <div class="media-body">
+           <h4 class="media-heading">
+             Comments
+           </h4>
+         </div>
+    </div>
+    <div class='js-comments'>
+      <%= render partial: 'comments/comment', collection: @comments %>
+    </div>
     <% if policy(Comment).create? %>
+    <div class='new-comment'>
     <%= render partial: 'comments/form', locals: { topic: @topic, post: @post } %>
+    </div>
     <% end %>
   </div>
   <div class="col-md-4">

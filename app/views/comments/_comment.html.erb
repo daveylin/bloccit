@@ -1,11 +1,4 @@
-<div class="media">
-         <div class="media-body">
-           <h4 class="media-heading">
-             Comments
-           </h4>
-         </div>
-       </div>
-<% @comments.each do |comment| %>
+<% #@comments.each do |comment| %>
 <%= content_tag :div, class: 'media', id: "comment-#{comment.id}" do %>
   <%= link_to '#', class: 'pull-left' do %>
     <%= image_tag(comment.user.avatar.tiny.url) if comment.user.avatar? %>
@@ -19,5 +12,5 @@
     </small>
     <p><%= comment.body %></p>
   </div>
-<% end %>
+<% #end %>
 <% end %>
